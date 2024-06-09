@@ -1,4 +1,4 @@
-@extends('department.index')
+@extends('layouts.layout')
 @section('body')
 <div class="row">
     <div class="col-8 offset-2">
@@ -35,9 +35,13 @@
                         <tr>
                             <td>{{ $index +1}}</td>
                             <td>{{ $depart->title}}</td>
-                            <td><img src="{{ $depart->image  }}" alt="image department"></td>
+                            <td><img src="{{ asset('images'.'/'.$depart->image) }}" alt="image department" width="100">
+                            </td>
                             <td>
-                                <span class="btn btn-primary">تعديل</span>
+                                <a href="{{ route('department.edit', $depart) }}">
+                                    <span class="btn btn-primary">تعديل</span>
+                                </a>
+
                                 <span class="btn btn-danger">حذف</span>
                             </td>
                         </tr>

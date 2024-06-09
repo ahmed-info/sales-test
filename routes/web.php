@@ -24,6 +24,8 @@ Route::get('content',[DepartmentController::class, 'dashboard'])->name('content'
 Route::get('department/list',[DepartmentController::class, 'list'])->name('department.list');
 Route::get('department/create',[DepartmentController::class, 'create'])->name('department.create');
 Route::post('department/store',[DepartmentController::class, 'store'])->name('department.store');
+Route::get('department/edit/{department}',[DepartmentController::class, 'edit'])->name('department.edit');
+Route::put('department/update/{id}',[DepartmentController::class, 'update'])->name('department.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

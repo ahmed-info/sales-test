@@ -10,7 +10,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('adminasset/docs/assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="{{ asset('adminasset/dist/css/ionicons.min.css') }}">
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet"
         href="{{ asset('adminasset/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
@@ -30,8 +31,10 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Bootstrap 4 RTL -->
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+
     <!-- Custom style for RTL -->
     <link rel="stylesheet" href="{{ asset('adminasset/dist/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminasset/plugins/toastr/toastr.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -42,10 +45,16 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('../layouts/sidebar')
+
+        @include('layouts/sidebar')
 
         <!-- Content Wrapper. Contains page content -->
-        @yield('body')
+        <div class="content">
+            <div class="container-fluid">
+                @yield('body')
+            </div>
+
+        </div>
         <!-- /.content-wrapper -->
 
         <!-- Control Sidebar -->
@@ -93,6 +102,23 @@
     <script src="{{ asset('adminasset/dist/js/pages/dashboard.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('adminasset/dist/js/demo.js') }}"></script>
+    <!-- Toastr -->
+    <script src="{{ asset('adminasset/plugins/toastr/toastr.min.js') }}"></script>
+    @if (Session::has('status'))
+    <script>
+        toastr.success("{{ Session::get('status') }}");
+    </script>
+
+
+    @endif
+
+    @if (Session::has('error'))
+    <script>
+        toastr.error("{{ Session::get('error') }}");
+    </script>
+
+
+    @endif
 </body>
 
 </html>
