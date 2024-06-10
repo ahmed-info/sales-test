@@ -28,6 +28,7 @@
                             <th>اسم القسم</th>
                             <th>الصورة</th>
                             <th>الحدث</th>
+                            <th>الابناء</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,8 +42,19 @@
                                 <a href="{{ route('department.edit', $depart) }}">
                                     <span class="btn btn-primary">تعديل</span>
                                 </a>
-
-                                <span class="btn btn-danger">حذف</span>
+                                <form action="{{ route('department.delete',$depart->id) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">حذف</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="{{ route('subdepart.list', $depart->id) }}">
+                                    <span class="btn btn-success">الاقسام الفرعية</span>
+                                </a>
+                                @foreach ($depart->subdepartments as $sub)
+                                <h3 style="display: inline; margin-left: 10px">{{ $sub->subtitle}}</h3>
+                                @endforeach
                             </td>
                         </tr>
                         @endforeach

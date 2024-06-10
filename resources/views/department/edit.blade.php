@@ -30,7 +30,7 @@
                                     width="100">
                                 <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                @error('myimage')
+                                @error('image')
                                 <span class="text-danger">{{ $message}}</span>
                                 @enderror
                             </div>
